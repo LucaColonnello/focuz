@@ -1,0 +1,44 @@
+exports[`createRenderEngine modifiers should use different type if a modifier change it 1`] = `
+<p>
+  My Text
+</p>
+`;
+
+exports[`createRenderEngine modifiers should use different type if a modifier set it to a Component 1`] = `
+<h1>
+  My Header
+</h1>
+`;
+
+exports[`createRenderEngine modifiers should use modifiers if passed down 1`] = `
+<div
+  className="my-container modified">
+  <h1>
+    My Header
+  </h1>
+  <img
+    alt=""
+    src="http://placehold.it/350x150" />
+  <p>
+    Lorem Ipsum dolor sit amen...
+  </p>
+</div>
+`;
+
+exports[`createRenderEngine render should render using react.createElement 1`] = `
+<div
+  className="main">
+  <h1>
+    My Header
+  </h1>
+  <div
+    className="content">
+    <img
+      alt=""
+      src="http://placehold.it/350x150" />
+    <p>
+      Lorem Ipsum dolor sit amen...
+    </p>
+  </div>
+</div>
+`;
