@@ -1,16 +1,16 @@
-exports[`createRenderEngine modifiers should use different type if a modifier change it 1`] = `
+exports[`createViewBuilder modifiers should use different type if a modifier change it 1`] = `
 <p>
   My Text
 </p>
 `;
 
-exports[`createRenderEngine modifiers should use different type if a modifier set it to a Component 1`] = `
+exports[`createViewBuilder modifiers should use different type if a modifier set it to a Component 1`] = `
 <h1>
   My Header
 </h1>
 `;
 
-exports[`createRenderEngine modifiers should use modifiers if passed down 1`] = `
+exports[`createViewBuilder modifiers should use modifiers if passed down 1`] = `
 <div
   className="my-container modified">
   <h1>
@@ -25,7 +25,7 @@ exports[`createRenderEngine modifiers should use modifiers if passed down 1`] = 
 </div>
 `;
 
-exports[`createRenderEngine render should render using react.createElement 1`] = `
+exports[`createViewBuilder render should render using react.createElement 1`] = `
 <div
   className="main">
   <h1>

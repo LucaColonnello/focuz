@@ -1,7 +1,7 @@
 {
   "name": "focuz",
   "version": "0.0.1",
-  "description": "React on the fly render engine",
+  "description": "React on the fly view builder",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",

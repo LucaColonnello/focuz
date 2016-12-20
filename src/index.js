@@ -1,5 +1,5 @@
-import createRenderEngine from './create-render-engine';
+import createViewBuilder from './create-view-builder';
 import createFocuzElement from './create-focuz-element';
 
-export default createRenderEngine;
+export default createViewBuilder;
 export { createFocuzElement };

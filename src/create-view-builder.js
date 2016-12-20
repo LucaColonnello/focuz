@@ -10,18 +10,18 @@ function findComponentInTypes({ type, props }, types) {
   }
 
   // otherwise throw error
-  throw new Error(`Focuz renderEngine: the type is not valid ->\n${
+  throw new Error(`Focuz viewBuilder: the type is not valid ->\n${
     JSON.stringify(type, null, '  ')
   }\n${
     JSON.stringify({ type, props }, null, '  ')
   }`);
 }
 
-export default function createRenderEngine(types, modifiers = []) {
-  const render = (component) => {
+export default function createViewBuilder(types, modifiers = []) {
+  const build = (component) => {
     // validation
     if (!component._isFocuz) {       // eslint-disable-line no-underscore-dangle
-      throw new Error(`Focuz renderEngine: the component is not a valid element ->\n${
+      throw new Error(`Focuz viewBuilder: the component is not a valid element ->\n${
         JSON.stringify({ type: component.type, props: component.props }, null, '   ')
       }`);
     }
@@ -38,9 +38,9 @@ export default function createRenderEngine(types, modifiers = []) {
       componentType = findComponentInTypes(modifiedComponent, types);
     }
 
-    // render children
+    // build children
     const children = (modifiedComponent.children || []).map(
-      comp => render(comp, modifiers));
+      comp => build(comp, modifiers));
 
     return createElement(
       componentType,
@@ -48,5 +48,5 @@ export default function createRenderEngine(types, modifiers = []) {
       ...children);
   };
 
-  return render;
+  return build;
 }

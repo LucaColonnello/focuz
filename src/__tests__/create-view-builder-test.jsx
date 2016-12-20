@@ -1,13 +1,13 @@
 import renderer from 'react-test-renderer';
-import createRenderEngine, { createFocuzElement } from '../';
+import createViewBuilder, { createFocuzElement } from '../';
 import types from '../__tests-support__/types';
 
-describe('createRenderEngine', () => {
+describe('createViewBuilder', () => {
   describe('render', () => {
     it('should render using react.createElement', () => {
-      const renderEngine = createRenderEngine(types);
+      const viewBuilder = createViewBuilder(types);
 
-      const component = renderEngine(createFocuzElement(
+      const component = viewBuilder(createFocuzElement(
         'Container',
         {
           className: 'main',
@@ -47,18 +47,18 @@ describe('createRenderEngine', () => {
     });
 
     it('should throw error when the element is not a focuz element', () => {
-      const renderEngine = createRenderEngine(types);
+      const viewBuilder = createViewBuilder(types);
 
-      expect(renderEngine.bind(null, {
+      expect(viewBuilder.bind(null, {
         type: 'Container',
         props: {},
-      })).toThrowError(/Focuz renderEngine: the component is not a valid element ->/);
+      })).toThrowError(/Focuz viewBuilder: the component is not a valid element ->/);
     });
   });
 
   describe('modifiers', () => {
     it('should use modifiers if passed down', () => {
-      const renderEngine = createRenderEngine(types, [
+      const viewBuilder = createViewBuilder(types, [
         (comp, { propTypes: { className } }) => ({
           ...comp,
           props: {
@@ -68,7 +68,7 @@ describe('createRenderEngine', () => {
         }),
       ]);
 
-      const component = renderEngine(createFocuzElement(
+      const component = viewBuilder(createFocuzElement(
         'Container',
         {
           className: 'my-container',
@@ -100,14 +100,14 @@ describe('createRenderEngine', () => {
     });
 
     it('should use different type if a modifier change it', () => {
-      const renderEngine = createRenderEngine(types, [
+      const viewBuilder = createViewBuilder(types, [
         comp => ({
           ...comp,
           type: comp.type === 'Header' ? 'Text' : comp.type,
         }),
       ]);
 
-      const component = renderEngine(createFocuzElement(
+      const component = viewBuilder(createFocuzElement(
         'Header',
         {
           text: 'My Text',
@@ -119,14 +119,14 @@ describe('createRenderEngine', () => {
     });
 
     it('should use different type if a modifier set it to a Component', () => {
-      const renderEngine = createRenderEngine(types, [
+      const viewBuilder = createViewBuilder(types, [
         comp => ({
           ...comp,
           type: comp.type === 'Text' ? types.Header : comp.type,
         }),
       ]);
 
-      const component = renderEngine(createFocuzElement(
+      const component = viewBuilder(createFocuzElement(
         'Text',
         {
           text: 'My Header',
