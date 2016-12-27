@@ -143,10 +143,50 @@ ReactDOM.render(
 ```
 
 
-## Change each node before create it with modifiers
+## Change nodes with modifiers
 
-WIP
+You can change each node before the view builder create the React element using *modifiers*.
 
-## Ready to use modifiers
+**A modifier is a function that has the responsibility to change nodes before the builder parse them.**
 
-WIP
+### Example of modifier:
+
+```js
+function layoutModifier(/* options */) {
+  return (node, ComponentType) => {
+    // check if the properties we work with exists
+    // otherwise return the node itself
+    // e.g.: if the style doesn't exists in propTypes,
+    // it means that the component doesn't handle style passed from outside
+    if (!node.props.layout || !ComponentType.propTypes.style) {
+      return node;
+    }
+
+    // get the layout property and clone props taking off the layout
+    // to avoid React to receive properties the Component doesn't care of
+    const layout = node.props.layout;
+    const props = {
+      ...node.props,
+      style: {},
+    };
+    delete props.layout;
+
+    // add some layout style
+    if (layout.margin) {
+      props.style.margin = layout.margin;
+    }
+
+    if (layout.padding) {
+      props.style.padding = layout.padding;
+    }
+
+    // something else in your imagination
+
+    // return the new node
+    return {
+      ...node,
+      props,
+    };
+  }
+}
+```
