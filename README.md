@@ -1,4 +1,5 @@
 # Project Focuz
+[![CircleCI](https://circleci.com/gh/LucaColonnello/focuz.svg?style=svg)](https://circleci.com/gh/LucaColonnello/focuz)
 
 Project Focuz is a React on the fly view builder which let you create react elements using a json object that describes how many components you want, their props and children.
 
