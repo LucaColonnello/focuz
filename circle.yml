@@ -1,0 +1,7 @@
+dependencies:
+  pre:
+    - npm i
+
+test:
+  override:
+    - npm test
