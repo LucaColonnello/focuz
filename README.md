@@ -191,3 +191,21 @@ function layoutModifier(/* options */) {
   }
 }
 ```
+
+## How to contribute
+
+To contribute just create an issue and then reference it in a PR involving your changes.
+Make sure to reference the issue using this syntax in the description of the PR:
+
+`Connect to #issue`
+
+
+## Release instructions
+
+The release process in currently a manual step that doesn't involve the CI.
+This might be changed in the future. By now, just do the following once master branch can be published.
+
+```
+npm -v [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git]
+npm publish --tag [<tag>]
+```
