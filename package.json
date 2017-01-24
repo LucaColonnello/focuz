@@ -1,11 +1,13 @@
 {
   "name": "focuz",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "React on the fly view builder",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "dist": "rm -rf dist && babel src --out-dir dist --ignore __tests*/",
+    "prepublish": "npm run dist"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,7 @@
   },
   "homepage": "https://github.com/LucaColonnello/focuz#readme",
   "devDependencies": {
+    "babel-cli": "^6.22.2",
     "babel-jest": "^18.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.20.2",
     "babel-preset-es2015": "^6.18.0",
